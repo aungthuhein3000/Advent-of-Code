@@ -11,12 +11,12 @@ def main():
             list2.append(int(ids[1]))
     
     score = 0 # similarity score
-    for location_id in list1:
+    for left_loc_id in list1:
         found = 0
         for right_loc_id in list2:
-            if location_id == right_loc_id:
+            if left_loc_id == right_loc_id:
                 found += 1
-        score += location_id * found
+        score += left_loc_id * found
     
     print(f"Similarity score: {score}") # answer: 21271939
 
