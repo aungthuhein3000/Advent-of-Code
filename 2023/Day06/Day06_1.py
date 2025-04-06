@@ -1,11 +1,12 @@
 def main():
-    file = open('/Users/aungthuhein/Documents/My documents/Code/Advent of Code/2023/Day06/input.txt')
-    lines = file.readlines()
+    file = open('input.txt')
+    lines: list[str] = file.readlines()
+    file.close()
 
-    times = []
-    distances = []
+    times: list[int] = []
+    distances: list[int] = []
 
-    input_nums = lines[0].split(':')[1].strip().split(' ')
+    input_nums: list[str] = lines[0].split(':')[1].strip().split(' ')
     for i in range(len(input_nums)):
         if input_nums[i].isdigit():
             times.append(int(input_nums[i]))
@@ -18,7 +19,7 @@ def main():
     print(times)
     print(distances)
 
-    total = 1
+    total: int = 1
     for i in range(len(times)):
         record_times = 0
         for h in range(1, times[i]):
@@ -26,9 +27,7 @@ def main():
                 record_times += 1
         total *= record_times
     
-    print(total)
-
-    file.close()
+    print(total) # answer: 840336
 
 if __name__ == '__main__':
     main()
