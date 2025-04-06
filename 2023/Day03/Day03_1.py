@@ -1,5 +1,5 @@
 def main():
-    file = open('/Users/aungthuhein/Documents/My documents/Code/Advent of Code/2023/Day03/test_input.txt')
+    file = open(r'/Users/aungthuhein/Documents/My documents/Code/Advent of Code/2023/Day03/test_input.txt')
 
     lines = [] # Process 3 lines at a time: 0 = last line, 1 = current line, 2 = next line
     lines.insert(0, '.' + file.readline().strip() + '.') # read first line

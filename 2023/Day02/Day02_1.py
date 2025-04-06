@@ -33,6 +33,8 @@ def main():
     
     print(f"ID total: {game_id_total}")
 
+    file_input.close()
+
 
 if __name__ == '__main__':
     main()

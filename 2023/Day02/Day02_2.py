@@ -30,6 +30,7 @@ def main():
     
     print(total)
     
+    file_input.close()
 
 
 if __name__ == '__main__':
