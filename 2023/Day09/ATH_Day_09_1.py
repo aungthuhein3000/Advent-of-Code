@@ -16,6 +16,8 @@ def main():
 
     print(f'Total: {total}')
 
+    file.close()
+
 def predict_value(seq: list[int]) -> int:
     diffs: list[list[int]] = [[]]
     diffs[0] = seq.copy()

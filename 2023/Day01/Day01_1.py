@@ -1,7 +1,7 @@
 def main():
-    file_input = open('input.txt')
-    lines = file_input.readlines()
-    total = 0
+    file_input  = open(r'input.txt')
+    lines: list[str] = file_input.readlines()
+    total: int = 0
 
     for line in lines:
         total += calibration_value(line)
@@ -10,20 +10,20 @@ def main():
 
     file_input.close()
 
-def calibration_value(line) -> int:
+def calibration_value(line: str) -> int:
     
-    value: str = '0'
+    value: str = '0' # not an int. The '0' is for when there's no numbers in the line
 
     if line.strip() == '':
         return 0
 
-    index = 0
+    index: int = 0
     while index < len(line) and not line[index].isdigit():
         index += 1
     if index < len(line):
-        value += line[index]
+        value += line[index] # concat as a string
 
-    index = len(line) - 1
+    index = len(line) - 1 # reusing a variable
     while index >= 0 and not line[index].isdigit():
         index -= 1
     if index >= 0:

@@ -16,6 +16,8 @@ def main():
 
     print(f'Total: {total}')
 
+    file.close()
+
 def extrapolate_backward(seq: list[int]) -> int:
     diffs: list[list[int]] = [[]]
     diffs[0] = seq.copy()
