@@ -69,7 +69,7 @@ def verify_assumptions(network: dict[str, tuple[str, str]], directions: list[int
 
 
 def main() -> int:
-    file = open(r"/Users/aungthuhein/Documents/My documents/Code/My repos/Advent-of-Code/2023/Day08/input.txt")
+    file = open(r"input.txt")
     directions: list[int] = [int(x == 'R') for x in file.readline().strip()] # list of directions to follow/repeat. 0 for left, 1 for right
     network: dict[str, tuple[str, str]] = {} # list of all tunnel "connections"
 
@@ -91,6 +91,7 @@ def main() -> int:
     for i in range(NODES):
         _, steps[i] = findZ(network, directions, current[i])
 
+    # find the least common multiple of steps taken
     print(f"\nTotal steps: {math.lcm(*steps):,}") # answer: 13,129,439,557,681
     return 0
 
