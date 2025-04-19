@@ -32,7 +32,7 @@ def main():
 
     sum: int = 0
     while True:
-        # find special characters in current line
+        # find special characters in current line and new line
         for row in range(1, 3):
             for i in range(1, LINE_LENGTH - 1):
                 if lines[row][i] != '.' and not lines[row][i].isdigit():
