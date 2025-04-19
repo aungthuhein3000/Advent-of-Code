@@ -30,7 +30,7 @@ def find_numbers(line: str) -> list[tuple[int, int, int]]:
     return numbers_list
 
 def main():
-    file = open(r'/Users/aungthuhein/Documents/My documents/Code/My repos/Advent-of-Code/2023/Day03/input.txt')
+    file = open(r'input.txt')
 
     lines: list[str] = []
     for _ in range(2):
@@ -89,5 +89,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # main()
-    test()
+    main()
