@@ -1,15 +1,3 @@
-def custom_print(list2d):
-    # print('[', end = "")
-    for row in list2d:
-        print('[', end = "")
-        for index in range(len(row)):
-            print(f"{row[index]:>2}", end = "")
-        print(" ]")
-
-
-    # print(']')
-        
-
 def find_numbers(line: str) -> list[tuple[int, int, int]]:
     LENGTH: int = len(line)
     numbers_list: list[tuple[int, int]] = [] # list of [start index, end index, actual number]
@@ -39,7 +27,8 @@ def main():
     BLANK_LINE: str = '.' * LINE_LENGTH
     lines.insert(0, BLANK_LINE)
 
-    specials: list[list[bool]] = [[False for _ in range(LINE_LENGTH)] for __ in range(3)]
+    BLANK_LINE_FOR_SPECIAL: list[bool] = [False for _ in range(LINE_LENGTH)]
+    specials: list[list[bool]] = [BLANK_LINE_FOR_SPECIAL.copy() for _ in range(3)]
 
     for i in range(1, LINE_LENGTH - 1):
         if lines[1][i] != '.' and not lines[1][i].isdigit():
@@ -63,14 +52,6 @@ def main():
                     sum += number[2]
                     sum_list.append(number[2])
                     break # break out of the inner for loop
-        
-        # print('Lines:')
-        # custom_print(lines)
-        # print('\nSpecials:')
-        # custom_print(specials)
-        # print(f'Sum so far: {sum} = {sum_list}')
-        # print('\n-------------------------')
-        # input()
 
         lines.pop(0)
         lines.insert(2, '.' + file.readline().strip() + '.')
@@ -82,7 +63,7 @@ def main():
             break
 
         specials.pop(0)
-        specials.insert(2, [False for _ in range(LINE_LENGTH)])
+        specials.insert(2, BLANK_LINE_FOR_SPECIAL.copy())
     
     print(f'Sum: {sum:,}')
     return 0
