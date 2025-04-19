@@ -26,8 +26,8 @@ def findZ(network: dict[str, tuple[str, str]], directions: list[int], node: str)
 def verify_assumptions(network: dict[str, tuple[str, str]], directions: list[int]) -> None:
     """
     To verify assumptions about the problem:
-    - check if all nodes are going in a loop
-    - check if # of steps for the loop is divisible by # of instructions
+    - check if all nodes are going in a loop, and more specifically in a loop containing the first Z ever encountered in all paths
+    - check if # of steps for the loop is divisible by # of instructions. (it could also be vice versa)
     """
 
     print("Checking assumptions...")
