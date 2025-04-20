@@ -61,6 +61,8 @@ def main():
         specials.pop(0)
         specials.insert(2, BLANK_LINE_FOR_SPECIAL.copy())
     
+    file.close()
+    
     print(f'Sum: {sum:,}')
     return 0
 
