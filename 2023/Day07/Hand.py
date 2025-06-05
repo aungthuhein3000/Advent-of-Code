@@ -20,6 +20,7 @@ class Hand:
             counts[card] += 1
         return sorted((x for x in counts.values() if x > 0), reverse = True)
 
+    # This method assumes the card counts have been calculated already.
     def __getHandType(self) -> str:
         if self.__card_counts[0] == 5: # to avoid accessing index 1 below
             return 'Five of a Kind'
@@ -40,10 +41,7 @@ class Hand:
             case _:
                 raise ValueError('Invalid hand type')
 
-    def __lt__(self, other: object) -> bool: # why can't I do `other: Hand` here?
-        if not isinstance(other, Hand):
-            raise TypeError("Incorrect type provided for comparison operator ('<').")
-
+    def __lt__(self, other: 'Hand') -> bool:
         if len(self.__card_counts) == len(other.__card_counts):
             if self.__card_counts[0] != other.__card_counts[0]: # detect three of a kind and two pair
                 return self.__card_counts[0] < other.__card_counts[0]
@@ -55,11 +53,11 @@ class Hand:
         else:
             return len(self.__card_counts) > len(other.__card_counts)
 
-    def __eq__(self, other: object) -> bool:
+    def __eq__(self, other: object) -> bool: # pyright doesn't like `other: 'Hand'` here 🫤
         if not isinstance(other, Hand):
-            raise TypeError("Incorrect type provided for comparison operator ('==').")
+            raise TypeError("Comparison not supported between 'Hand' and other types.")
         return self.hand == other.hand
 
-    def __str__(self):
+    def __repr__(self) -> str:
         return self.hand
 
