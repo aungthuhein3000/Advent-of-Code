@@ -26,7 +26,7 @@ def main() -> None:
     for rank in range(1, len(hands) + 1):
         total_winnings += rank * hands[rank - 1][1]
 
-    print(f"Total winnings: {total_winnings}")
+    print(f"Total winnings: {total_winnings}") # Answer: 244848487
 
 
 def test_Hand() -> None:
@@ -46,11 +46,11 @@ def test_Hand() -> None:
             print(f'{ve}.\n')
         else:
             if h1 < h2:
-                print(f'{h1} ({h1.hand_type}) < {h2} ({h2.hand_type})')
+                print(f'{h1} < {h2}')
             elif h1 == h2:
-                print(f'{h1} ({h1.hand_type}) == {h2} ({h2.hand_type})')
+                print(f'{h1} == {h2}')
             else:
-                print(f'{h1} ({h1.hand_type}) > {h2} ({h2.hand_type})')
+                print(f'{h1} > {h2}')
             print()
 
     print('Exiting...')

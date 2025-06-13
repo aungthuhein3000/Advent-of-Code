@@ -19,6 +19,7 @@ class Hand:
             else:
                 counts[card] = 1
         return sorted(((count, card) for card, count in counts.items()), reverse = True)
+        # unnecessary to sort by `card` as well here
 
 
     @staticmethod
@@ -26,8 +27,6 @@ class Hand:
         if len(hand) == 1:
             return hand
 
-#        counts: list[tuple[int, str]] = Hand.__getCardCounts(hand) # only possible to get 2 to 4 cards
-#        return counts[0][1]
         return Hand.__getCardCounts(hand)[0][1]
 
 
@@ -41,14 +40,13 @@ class Hand:
     # end of static members
 
 
-    def __init__(self, h: str) -> None:
-        if len(h) != 5 or not all(c in Hand.CARDS for c in h):
+    def __init__(self, hand: str) -> None:
+        if len(hand) != 5 or not all(c in Hand.CARDS for c in hand):
             raise ValueError(f'Error: "{h}" is not a valid hand')
 
-        self.hand: str = h
-        self.best_hand: str = Hand.__getBestHand(h) # jokers converted to make best hand
-        self.__card_counts: list[tuple[int, str]] = Hand.__getCardCounts(self.best_hand) # counts of each card in desc order ('25252' => [3, 2])
-        self.hand_type: str = self.__getHandType()
+        self.hand: str = hand
+        best_hand: str = Hand.__getBestHand(hand) # jokers converted to make best hand
+        self.__card_counts: list[tuple[int, str]] = Hand.__getCardCounts(best_hand) # counts of each card in desc order ('25252' => [3, 2])
 
 
     # This method assumes the card counts have been calculated already.
@@ -99,6 +97,10 @@ class Hand:
         if not isinstance(other, Hand):
             raise TypeError("Comparison not supported between 'Hand' and other types.")
         return self.hand == other.hand
+
+
+    def __str__(self) -> str:
+        return f"{self.hand} ({self.__getHandType()})"
 
 
     def __repr__(self) -> str:
