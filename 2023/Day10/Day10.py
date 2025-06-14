@@ -1,5 +1,7 @@
 """
 Contains a ray casting solution copied from the internet. Not sure why it works.
+See: https://en.wikipedia.org/wiki/Point_in_polygon
+
 Apart from lines indicated as copied in `part2()`, I wrote *every single line*.
 """
 
