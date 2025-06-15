@@ -16,13 +16,12 @@ def read_file(filename: str) -> list[str]:
 def insert_columns(img: list[str], indexes: list[int]) -> None:
     ss: StringIO = StringIO()
     for r in range(len(img)):
-        line: str = img[r]
         prev_index: int = 0
         for index in indexes:
-            ss.write(line[prev_index:index])
+            ss.write(img[r][prev_index:index])
             prev_index = index
             ss.write('.')
-        ss.write(line[prev_index:])
+        ss.write(img[r][prev_index:])
 
         img[r] = ss.getvalue()
         ss.seek(0)
@@ -30,7 +29,7 @@ def insert_columns(img: list[str], indexes: list[int]) -> None:
     ss.close()
 
 
-def expand_image(img: list[str]) -> list[str]:
+def expand_image(img: list[str]) -> None:
     empty_cols: list[int] = []
     width: int = len(img[0])
     height: int = len(img)
@@ -70,7 +69,8 @@ def main() -> None:
             if image[r][c] == '#':
                 galaxy_coords.append(Index(r, c))
 
-    pairs: combinations[str] = combinations(galaxy_coords, 2)
+    # check this type annotation
+    pairs: combinations[tuple[Index, Index]] = combinations(galaxy_coords, 2)
     total_distances: int = 0
     for pair in pairs: # tuple of two Index objects
         total_distances += abs(pair[0].row - pair[1].row) + abs(pair[0].col - pair[1].col)
